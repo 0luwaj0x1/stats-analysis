@@ -1,0 +1,26 @@
+{
+  "name": "stats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/index.js",
+    "start": "concurrently npm:start:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullstackmofo/stats-analysis.git"
+  },
+  "keywords": [],
+  "author": "Josiah Ilesanmi <ilesanmi.josiah@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fullstackmofo/stats-analysis/issues"
+  },
+  "homepage": "https://github.com/fullstackmofo/stats-analysis#readme",
+  "dependencies": {
+    "concurrently": "5.1.0",
+    "nodemon": "2.0.2"
+  }
+}
