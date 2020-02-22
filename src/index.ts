@@ -1,6 +1,9 @@
 import { MatchReader } from './MatchReader';
 import { CsvFileReader } from './CsvFileReader';
-import { MatchPossibility } from './matchResults'
+import {Summary} from './Summary';
+import { ConsoleReport } from './reportTargets/ConsoleReport'
+import {WinsAnalysis} from './analyzers/WinsAnalysis'
+
 
 const readCsv = new CsvFileReader('football.csv');
 
@@ -8,18 +11,13 @@ const matchReader = new MatchReader(readCsv);
 
 matchReader.load();
 
+const summary = new Summary(
+  new WinsAnalysis('Man United'),
+  new ConsoleReport()
+);
 
-let manUwins = 0;
-
-for(let match of matchReader.matches) {
-  if( match[1] === 'Man United' && match[5] === MatchPossibility.HomeWin) {
-    manUwins++
-  }else if (match[2] === 'Man United' && match[5] === MatchPossibility.AwayWin) {
-    manUwins++
-  }
-}
+summary.buildAndPrintReport(matchReader.matches);
 
 
-console.log(`Man United has won ${manUwins} times`)
 
 
